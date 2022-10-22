@@ -1,0 +1,72 @@
+ ./gradlew build
+
+gradle clean build
+gradle k8sBuild
+docker images | grep demob:0
+docker tag venugopalmg/demobapp:latest   venugopalmg
+gradle k8sPush if this failes
+then run below cmd
+docker push docker.io/venugopalmg/demobapp:latest   
+gradle k8sResource
+gradle k8sApply
+
+kubectl get pods
+kubectl get svc
+gradle k8sUndeploy
+
+------------------
+ ./gradlew build
+
+gradle clean build
+gradle k8sBuild
+
+docker tag  venugopalmg/demoaapp:0.1 venugopalmg
+
+docker push docker.io/venugopalmg/demoaapp:0.1
+
+gradle k8sResource
+gradle k8sApply
+gradle k8sUndeploy
+-----------------------
+curl -X POST -v -d '{"username": "slinkydeveloper", "firstName": "Francesco", "lastName": "Guardiani", "age": 23}' -H'Content-type: application/json' -H'Ce-id: 1' -H'Ce-source: cloud-event-example' -H'Ce-type: fss.myapplication' -H'Ce-specversion: 1.0' http://localhost:8080/demob/send_user
+
+curl   -X POST   http://localhost:8082/demoa/get_user 
+
+  curl http://localhost:31513/demob/message
+  
+   demobapp-7664d97b99-szvx9:8080/demob/message
+   
+   
+   http://localhost:8082/demoa/message
+   
+  curl   -X POST http://localhost:8082/demoa/get_user 
+  
+  
+  https://www.youtube.com/watch?v=vT-tUogVOhk
+  
+  -------------------------------------------------------------
+ 
+  1.first clear or delete old images
+  then 
+  
+  2.pull the image from docker
+  demob applocation and demoa application
+  
+   command : docker pull  venugopalmg/demobapp
+  
+   command :  docker pull  venugopalmg/demoaapp
+   
+  3. the go to each project inside  then perform below commands
+  
+    gradle k8sResource
+    gradle k8sApply
+	
+	
+  4.	then 
+	demoa to demob  below curl command
+	curl   -X POST   http://localhost:8082/demoa/get_user 
+	
+	then if you want check logs the 
+	
+	kubectl logs demobpod id
+  
